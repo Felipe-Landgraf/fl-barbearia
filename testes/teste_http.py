@@ -11,7 +11,7 @@ resultados = []
 
 def pedir(caminho, dados=None, metodo=None):
     corpo = urlencode(dados).encode() if isinstance(dados, dict) else dados
-    pedido = Request(base + caminho, data=corpo, method=metodo)
+    pedido = Request(base + caminho, data=corpo, method=metodo, headers={'Origin': base} if corpo is not None else {})
     try:
         resposta = urlopen(pedido, timeout=15)
     except HTTPError as erro:

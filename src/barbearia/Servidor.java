@@ -91,7 +91,10 @@ public class Servidor {
                 return;
             }
             Map<String, String> dados = parametros(new String(corpo, StandardCharsets.UTF_8));
-            if (!token.equals(dados.get("token")) || !configuracao.origemPermitida(pedido.getRequestHeaders().getFirst("Origin"))) {
+            String origem = pedido.getRequestHeaders().getFirst("Origin");
+            boolean tokenValido = token.equals(dados.get("token"));
+            if (!tokenValido || !configuracao.origemPermitida(origem)) {
+                System.err.println("Formulário recusado. Token válido: " + tokenValido + "; origem: " + origem);
                 responder(pedido, 403, pagina.erro("Atualize a página e envie o formulário novamente."));
                 return;
             }
