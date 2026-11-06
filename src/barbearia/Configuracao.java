@@ -79,7 +79,7 @@ public class Configuracao {
     }
 
     public boolean origemPermitida(String origem) {
-        return origem == null || origem.equalsIgnoreCase(enderecoPublico)
+        return origem == null || "null".equals(origem) || origem.equalsIgnoreCase(enderecoPublico)
             || (!online && (origem.equalsIgnoreCase("http://127.0.0.1:" + porta)
                 || origem.equalsIgnoreCase("http://localhost:" + porta)));
     }

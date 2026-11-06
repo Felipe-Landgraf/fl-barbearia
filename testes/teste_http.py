@@ -9,9 +9,9 @@ from pathlib import Path
 base = 'http://127.0.0.1:8086'
 resultados = []
 
-def pedir(caminho, dados=None, metodo=None):
+def pedir(caminho, dados=None, metodo=None, origem=None):
     corpo = urlencode(dados).encode() if isinstance(dados, dict) else dados
-    pedido = Request(base + caminho, data=corpo, method=metodo, headers={'Origin': base} if corpo is not None else {})
+    pedido = Request(base + caminho, data=corpo, method=metodo, headers={'Origin': base if origem is None else origem} if corpo is not None else {})
     try:
         resposta = urlopen(pedido, timeout=15)
     except HTTPError as erro:
@@ -30,6 +30,8 @@ conferir('Páginas não carregam serviços externos', not re.search(r'(?:src|hre
 conferir('Cabeçalhos limitam os recursos ao próprio site', "default-src 'self'" in headers.get('Content-Security-Policy', ''))
 conferir('Arquivos do banco e fontes não ficam expostos', pedir('/dados/agenda.mv.db')[0] == 404 and pedir('/src/barbearia/Banco.java')[0] == 404)
 conferir('Envio sem proteção do formulário é recusado', pedir('/agendar', {'nome': 'Teste'})[0] == 403)
+conferir('Navegador incorporado também precisa do token', pedir('/agendar', {'nome': 'Teste'}, origem='null')[0] == 403)
+conferir('Outro site é recusado mesmo com token válido', pedir('/consultar', {'token': token}, origem='https://outro-site.example')[0] == 403)
 conferir('Formulário excessivo é recusado', pedir('/agendar', b'a' * 8193)[0] == 413)
 conferir('Método inválido é recusado', pedir('/', metodo='PUT')[0] == 405)
 conferir('Data inexistente tem erro legível', pedir('/?data=2026-02-31')[0] == 400)
@@ -40,7 +42,7 @@ dados = {'token': token, 'servico': 'combo', 'barbeiro': 'lucas', 'data': str(di
 invalidos = dict(dados, nome='<img src=x onerror=alert(1)>', telefone='123')
 status, pagina, _, _ = pedir('/agendar', invalidos)
 conferir('Erro preserva campos com HTML escapado', status == 400 and 'value="&lt;img src=x onerror=alert(1)&gt;"' in pagina and '<img src=x' not in pagina)
-status, pagina, endereco, _ = pedir('/agendar', dados)
+status, pagina, endereco, _ = pedir('/agendar', dados, origem='null')
 codigo = re.search(r'id="codigo-reserva">([A-F0-9]{16})', pagina)[1]
 conferir('Reserva redireciona para a confirmação', status == 200 and '/reserva?codigo=' in endereco and 'Seu horário está reservado.' in pagina)
 conferir('Confirmação não expõe nome nem telefone', dados['nome'] not in pagina and dados['telefone'] not in pagina)
