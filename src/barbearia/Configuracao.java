@@ -63,6 +63,7 @@ public class Configuracao {
         propriedades.setProperty("tcpKeepAlive", "true");
         boolean local = "localhost".equals(url.getHost()) || "127.0.0.1".equals(url.getHost());
         propriedades.setProperty("sslmode", local ? "disable" : "verify-full");
+        if (!local) propriedades.setProperty("sslfactory", "org.postgresql.ssl.DefaultJavaSSLFactory");
         int porta = url.getPort() == -1 ? 5432 : url.getPort();
         String jdbc = "jdbc:postgresql://" + url.getHost() + ":" + porta + url.getRawPath();
         return new Banco(jdbc, propriedades);
