@@ -1,34 +1,10 @@
-const botaoMenu = document.querySelector('.menu-botao');
-const navegacao = document.querySelector('#navegacao');
+const formularioAgendar = document.querySelector('#form-agendar');
 
-botaoMenu.addEventListener('click', function () {
-    const aberto = botaoMenu.getAttribute('aria-expanded') === 'true';
-    botaoMenu.setAttribute('aria-expanded', String(!aberto));
-    navegacao.classList.toggle('aberta', !aberto);
-});
-
-navegacao.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-        botaoMenu.setAttribute('aria-expanded', 'false');
-        navegacao.classList.remove('aberta');
-    });
-});
-
-document.addEventListener('keydown', function (evento) {
-    if (evento.key === 'Escape' && botaoMenu.getAttribute('aria-expanded') === 'true') {
-        botaoMenu.setAttribute('aria-expanded', 'false');
-        navegacao.classList.remove('aberta');
-        botaoMenu.focus();
-    }
-});
-
-const consultaHorarios = document.querySelector('#consulta-horarios');
-const botaoConfirmar = document.querySelector('#confirmar');
-
-if (consultaHorarios) {
-    consultaHorarios.addEventListener('change', function () {
-        document.querySelector('#aviso-atualizar').hidden = false;
-        botaoConfirmar.disabled = true;
+if (formularioAgendar) {
+    formularioAgendar.querySelectorAll('input[name="horario"]').forEach(function (horario) {
+        horario.addEventListener('change', function () {
+            document.querySelector('#horario-escolhido').textContent = 'Horário escolhido: ' + horario.value;
+        });
     });
 }
 

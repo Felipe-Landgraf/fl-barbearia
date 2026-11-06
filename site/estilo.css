@@ -340,3 +340,105 @@ input[type="date"] { min-height: 47px; }
     html { scroll-behavior: auto; }
     * { transition: none !important; }
 }
+
+.acesso-agendamento { border: 1px solid #696353; padding: 12px 18px; font-weight: 700; }
+.acesso-rapido { padding-top: 24px; }
+.atalho-agenda { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 18px 24px; background: var(--painel); border: 1px solid var(--borda); }
+.atalho-agenda strong { font-size: 15px; }
+.atalho-agenda p { font-size: 13px; color: var(--suave); }
+.lembrete-reserva > .etiqueta { margin-bottom: 10px; }
+.como-funciona { display: grid; grid-template-columns: 1fr 1.1fr 0.8fr; gap: 48px; padding-block: 64px; border-bottom: 1px solid var(--borda); }
+.como-funciona h2 { margin-top: 15px; font-size: 39px; }
+.como-funciona .passos { padding-top: 0; }
+.pagina-agenda { width: min(760px, calc(100% - 48px)); margin: 0 auto; padding: 35px 0 65px; min-height: 70vh; }
+.pagina-agenda .voltar { margin-bottom: 25px; font-size: 13px; }
+.pagina-agenda h1 { font-size: clamp(38px, 4.4vw, 54px); margin: 22px 0 14px; }
+.introducao-agenda { color: var(--suave); font-size: 14px; margin-bottom: 25px; }
+.etapas { display: flex; list-style: none; margin: 0; padding: 0; gap: 30px; color: var(--suave); }
+.etapas li { display: flex; gap: 9px; align-items: center; font-size: 12px; }
+.etapas span { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--borda); border-radius: 50%; }
+.etapas [aria-current] { color: var(--texto); font-weight: 700; }
+.etapas [aria-current] span { background: var(--cobre); border-color: var(--cobre); color: var(--fundo); }
+.pagina-agenda .agenda-formularios { padding: 28px; }
+.pagina-agenda label, .pagina-agenda legend { font-size: 14px; }
+.pagina-agenda .escolha { min-height: 70px; }
+.pagina-agenda .escolha strong { font-size: 14px; }
+.pagina-agenda .escolha small { font-size: 12px; }
+.pagina-agenda input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]) { font-size: 16px; min-height: 48px; }
+.pagina-agenda .botao { font-size: 14px; min-height: 48px; }
+.pagina-agenda .texto-apoio { font-size: 12px; }
+.proxima-etapa { margin-top: 25px; }
+.ajuda-final { text-align: center; color: var(--suave); font-size: 13px; margin-top: 23px; }
+.ajuda-final a, .selecao-atual a { color: var(--cobre); text-decoration: underline; text-underline-offset: 4px; }
+.selecao-atual { display: flex; justify-content: space-between; align-items: center; gap: 15px; border-bottom: 1px solid var(--borda); padding-bottom: 18px; margin-bottom: 24px; font-size: 14px; }
+.selecao-atual strong, .selecao-atual span { display: block; }
+.selecao-atual strong { text-transform: capitalize; }
+.selecao-atual span { color: var(--suave); font-size: 12px; margin-top: 4px; }
+.pagina-agenda .hora span { font-size: 14px; padding-block: 13px; }
+.pagina-agenda .resumo > div strong { font-size: 15px; }
+.pagina-agenda .resumo > div span { font-size: 13px; }
+.meus-agendamentos { width: min(930px, calc(100% - 48px)); }
+.titulo-agenda { display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+.titulo-agenda h1 { margin-top: 10px; }
+.lista-reservas { display: grid; gap: 15px; }
+.cartao-reserva { display: flex; align-items: center; gap: 24px; background: var(--painel); border: 1px solid var(--borda); padding: 24px; }
+.data-reserva { display: grid; justify-items: center; width: 72px; flex-shrink: 0; padding: 8px; border: 1px solid #65583f; color: var(--cobre); line-height: 1.3; }
+.data-reserva strong { font: 34px Georgia, serif; }
+.data-reserva span { font-size: 13px; text-transform: uppercase; }
+.cartao-informacoes { flex: 1; }
+.cartao-informacoes h2 { font-size: 27px; letter-spacing: -0.03em; margin: 5px 0 8px; }
+.cartao-informacoes p { font-size: 13px; color: var(--suave); }
+.cartao-informacoes p strong { color: var(--texto); }
+.estado-reserva { color: var(--cobre); font-size: 11px; font-weight: 700; }
+.cartao-reserva .botao { flex-shrink: 0; }
+.agenda-vazia { border: 1px dashed #625c4b; padding: 35px 25px; text-align: center; background: var(--painel); }
+.agenda-vazia > span { color: var(--cobre); font-size: 38px; }
+.agenda-vazia h2 { font-size: 30px; margin: 12px 0; }
+.agenda-vazia p { max-width: 420px; margin: 0 auto 22px; font-size: 14px; color: var(--suave); }
+.buscar-reserva, .historico, .cancelar-reserva { border: 1px solid var(--borda); background: var(--painel); padding: 20px 24px; margin-top: 25px; }
+summary { cursor: pointer; }
+.buscar-reserva summary, .historico summary, .cancelar-reserva summary { font-size: 14px; font-weight: 700; }
+.buscar-reserva > p { color: var(--suave); font-size: 13px; margin-top: 15px; }
+.buscar-reserva form, .cancelar-reserva form { margin-top: 20px; }
+.buscar-reserva label { margin-bottom: 18px; }
+.historico .lista-reservas { margin-top: 20px; }
+.historico .cartao-reserva { padding: 18px 0; border-width: 1px 0 0; }
+.codigo-reserva summary { color: #535345; font-size: 12px; }
+.ver-agendamentos { margin-top: 20px; font-size: 14px; }
+.bilhete dd { font-size: 16px; font-weight: 700; }
+.reserva .reserva-icone { margin-bottom: 15px; }
+.reserva h1 { font-size: 46px; }
+.cancelar-reserva input[type="tel"] { font-size: 16px; }
+
+@media (max-width: 760px) {
+    .cabecalho { flex-wrap: wrap; padding-block: 18px; gap: 18px; }
+    .cabecalho .menu-botao { display: none; }
+    .cabecalho nav { position: static; display: flex; flex-direction: row; width: 100%; gap: 10px; padding: 0; border: 0; background: transparent; }
+    .cabecalho nav > a { flex: 1; text-align: center; padding: 12px 8px; font-size: 12px; }
+    .cabecalho nav > a:first-child { display: none; }
+    .cabecalho nav .botao { justify-content: center; gap: 12px; }
+    .como-funciona { grid-template-columns: 1fr; gap: 28px; padding-block: 40px; }
+    .como-funciona .horario-funcionamento { max-width: none; }
+    .atalho-agenda { padding: 16px; gap: 14px; }
+    .atalho-agenda p { font-size: 11px; }
+    .atalho-agenda .botao { padding: 12px; gap: 10px; font-size: 11px; }
+    .pagina-agenda, .meus-agendamentos { width: calc(100% - 36px); padding-top: 25px; }
+    .pagina-agenda .agenda-formularios { padding: 20px 15px; margin: 0; }
+    .etapas { gap: 18px; }
+    .etapas li { font-size: 11px; gap: 7px; }
+    .pagina-agenda h1 { font-size: 40px; }
+    .pagina-agenda .horarios { grid-template-columns: repeat(4, 1fr); }
+    .pagina-agenda .escolha { padding: 12px 9px; }
+    .pagina-agenda .escolha strong { font-size: 12px; }
+    .pagina-agenda .escolha small { font-size: 11px; }
+    .titulo-agenda { display: block; margin-bottom: 20px; }
+    .cartao-reserva { flex-wrap: wrap; gap: 15px; padding: 18px; }
+    .cartao-reserva .botao { width: 100%; justify-content: space-between; }
+    .cartao-informacoes h2 { font-size: 25px; }
+    .cartao-informacoes p { font-size: 12px; }
+    .data-reserva { width: 58px; }
+    .data-reserva strong { font-size: 30px; }
+    .buscar-reserva, .historico, .cancelar-reserva { padding: 18px; }
+    .buscar-reserva summary { line-height: 1.7; }
+    .reserva h1 { font-size: 37px; }
+}

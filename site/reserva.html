@@ -1,15 +1,16 @@
 <section class="pagina-curta reserva">
-    <a class="voltar" href="/">← Voltar para a barbearia</a>
+    <a class="voltar" href="/consultar">← Meus agendamentos</a>
     <span class="reserva-icone" aria-hidden="true">{{simbolo}}</span>
     <p class="etiqueta">{{estado}}</p>
     <h1>{{titulo}}</h1>
-    <p>Seu tempo está nos detalhes. Confira as informações abaixo.</p>
+    <p>Confira seu horário. Você pode voltar a esta reserva em “Meu agendamento”.</p>
     <div class="bilhete">
         <div class="bilhete-topo"><span>FL BARBEARIA</span><span>SEU MOMENTO</span></div>
         <h2>{{servico}}</h2>
         <p>Com {{barbeiro}}</p>
         <dl><div><dt>Dia</dt><dd>{{data}}</dd></div><div><dt>Horário</dt><dd>{{horario}} às {{fim}}</dd></div><div><dt>Valor ilustrativo</dt><dd>{{preco}}</dd></div></dl>
-        <div class="codigo-reserva"><span>CÓDIGO DO AGENDAMENTO</span><strong id="codigo-reserva">{{codigo}}</strong><button type="button" id="copiar-codigo">Copiar código <span aria-hidden="true">↗</span></button><small id="retorno-copia" aria-live="polite">Guarde este código para consultar ou cancelar.</small></div>
+        <details class="codigo-reserva"><summary>Código para consultar em outro aparelho</summary><strong id="codigo-reserva">{{codigo}}</strong><button type="button" id="copiar-codigo">Copiar código <span aria-hidden="true">↗</span></button><small id="retorno-copia" aria-live="polite">Guarde o código se quiser consultar em outro navegador.</small></details>
     </div>
+    <a class="botao confirmar ver-agendamentos" href="/consultar">Ver meus agendamentos <span aria-hidden="true">→</span></a>
     <div class="reserva-acao">{{acao}}</div>
 </section>

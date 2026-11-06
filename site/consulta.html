@@ -1,9 +1,11 @@
-<section class="pagina-curta consulta">
-    <a class="voltar" href="/">← Voltar para a barbearia</a>
-    <p class="etiqueta">SEU MOMENTO, ORGANIZADO</p>
-    <h1>Meu <em>agendamento.</em></h1>
-    <p>Informe o código que você recebeu na confirmação e o telefone usado na reserva.</p>
-    <div class="painel-consulta">
+<section class="pagina-agenda meus-agendamentos">
+    <a class="voltar" href="/">← Voltar para o início</a>
+    <div class="titulo-agenda"><div><p class="etiqueta">TUDO EM UM SÓ LUGAR</p><h1>Meus <em>agendamentos.</em></h1></div><a class="botao contorno" href="/agendar">Novo agendamento <span aria-hidden="true">+</span></a></div>
+    <p class="introducao-agenda">Confira o dia, o horário e os detalhes da sua reserva.</p>
+    {{reservas}}
+    <details class="buscar-reserva" {{aberto}}>
+        <summary>Já agendou em outro aparelho? Buscar pelo código</summary>
+        <p>Informe o código recebido na confirmação e o telefone usado na reserva.</p>
         {{aviso}}
         <form action="/consultar" method="post">
             <input type="hidden" name="token" value="{{token}}">
@@ -11,6 +13,6 @@
             <label for="telefone">Telefone com DDD<input id="telefone" type="tel" name="telefone" inputmode="tel" autocomplete="tel-national" placeholder="(19) 99999-9999" maxlength="16" required></label>
             <button class="botao confirmar" type="submit">Consultar agendamento <span aria-hidden="true">↗</span></button>
         </form>
-    </div>
-    <p class="texto-apoio">O código aparece somente na confirmação. Não enviamos SMS ou WhatsApp.</p>
+    </details>
+    <p class="texto-apoio">Os últimos 5 agendamentos feitos ou consultados neste navegador aparecem aqui por até 60 dias. Se limpar os dados do navegador, use o código para consultar novamente.</p>
 </section>

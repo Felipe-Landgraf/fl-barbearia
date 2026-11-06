@@ -20,6 +20,8 @@ import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 
 public class Servidor {
@@ -71,8 +73,10 @@ public class Servidor {
             if (metodo.equals("GET") && arquivo(pedido, caminho)) return;
             if (metodo.equals("GET")) {
                 Map<String, String> dados = parametros(pedido.getRequestURI().getRawQuery());
-                if (caminho.equals("/")) responder(pedido, 200, pagina.inicio(dados, ""));
-                else if (caminho.equals("/consultar")) responder(pedido, 200, pagina.consulta(dados.getOrDefault("codigo", ""), ""));
+                if (caminho.equals("/")) responder(pedido, 200, pagina.inicio(reservasDoNavegador(pedido)));
+                else if (caminho.equals("/agendar")) responder(pedido, 200, pagina.agendar(dados, ""));
+                else if (caminho.equals("/consultar")) responder(pedido, 200,
+                    pagina.consulta(reservasDoNavegador(pedido), dados.getOrDefault("codigo", ""), ""));
                 else if (caminho.equals("/reserva")) {
                     Agendamento reserva = banco.buscar(dados.getOrDefault("codigo", ""));
                     if (reserva == null) responder(pedido, 404, pagina.erro("Esse agendamento não foi encontrado."));
@@ -100,22 +104,29 @@ public class Servidor {
                     String codigo = agenda.agendar(dados.get("servico"), dados.get("barbeiro"),
                         LocalDate.parse(dados.getOrDefault("data", "")), LocalTime.parse(dados.getOrDefault("horario", "")),
                         dados.get("nome"), dados.get("telefone"));
+                    lembrarReserva(pedido, codigo);
                     redirecionar(pedido, "/reserva?codigo=" + codigo + "&novo=1");
                 } catch (IllegalArgumentException erro) {
-                    responder(pedido, 400, pagina.inicio(dados, erro.getMessage()));
+                    dados.put("etapa", "horarios");
+                    responder(pedido, 400, pagina.agendar(dados, erro.getMessage()));
                 }
             } else if (caminho.equals("/consultar")) {
                 try {
                     Agendamento reserva = agenda.consultar(dados.get("codigo"), dados.get("telefone"));
+                    lembrarReserva(pedido, reserva.codigo());
                     responder(pedido, 200, pagina.reserva(reserva, Agenda.limparTelefone(dados.get("telefone")), false));
                 } catch (IllegalArgumentException erro) {
-                    responder(pedido, 400, pagina.consulta(dados.getOrDefault("codigo", ""), erro.getMessage()));
+                    responder(pedido, 400, pagina.consulta(reservasDoNavegador(pedido), dados.getOrDefault("codigo", ""), erro.getMessage()));
                 }
             } else if (caminho.equals("/cancelar")) {
-                if (!"sim".equals(dados.get("confirmacao"))) throw new IllegalArgumentException("Marque a confirmação antes de cancelar.");
-                agenda.cancelar(dados.get("codigo"), dados.get("telefone"));
-                String codigo = agenda.consultar(dados.get("codigo"), dados.get("telefone")).codigo();
-                redirecionar(pedido, "/reserva?codigo=" + codigo);
+                try {
+                    if (!"sim".equals(dados.get("confirmacao"))) throw new IllegalArgumentException("Marque a confirmação antes de cancelar.");
+                    agenda.cancelar(dados.get("codigo"), dados.get("telefone"));
+                    String codigo = agenda.consultar(dados.get("codigo"), dados.get("telefone")).codigo();
+                    redirecionar(pedido, "/reserva?codigo=" + codigo);
+                } catch (IllegalArgumentException erro) {
+                    responder(pedido, 400, pagina.consulta(reservasDoNavegador(pedido), dados.getOrDefault("codigo", ""), erro.getMessage()));
+                }
             } else responder(pedido, 404, pagina.erro("Essa ação não foi encontrada."));
         } catch (IllegalArgumentException | java.time.DateTimeException erro) {
             responder(pedido, 400, pagina.erro("Confira os dados enviados e escolha uma data e horário válidos."));
@@ -125,6 +136,39 @@ public class Servidor {
         } finally {
             pedido.close();
         }
+    }
+
+    private List<String> codigosSalvos(HttpExchange pedido) {
+        List<String> codigos = new ArrayList<>();
+        String cookies = pedido.getRequestHeaders().getFirst("Cookie");
+        if (cookies == null) return codigos;
+        for (String cookie : cookies.split(";")) {
+            String[] partes = cookie.strip().split("=", 2);
+            if (partes.length != 2 || !partes[0].equals("fl_reservas")) continue;
+            for (String codigo : partes[1].split("_")) {
+                if (codigo.matches("[A-F0-9]{16}") && !codigos.contains(codigo) && codigos.size() < 5) codigos.add(codigo);
+            }
+        }
+        return codigos;
+    }
+
+    private List<Agendamento> reservasDoNavegador(HttpExchange pedido) throws SQLException {
+        List<Agendamento> reservas = new ArrayList<>();
+        for (String codigo : codigosSalvos(pedido)) {
+            Agendamento reserva = banco.buscar(codigo);
+            if (reserva != null) reservas.add(reserva);
+        }
+        return reservas;
+    }
+
+    private void lembrarReserva(HttpExchange pedido, String codigo) {
+        List<String> codigos = codigosSalvos(pedido);
+        codigos.remove(codigo);
+        codigos.addFirst(codigo);
+        if (codigos.size() > 5) codigos.removeLast();
+        String cookie = "fl_reservas=" + String.join("_", codigos) + "; Path=/; Max-Age=5184000; HttpOnly; SameSite=Lax";
+        if (configuracao.enderecoPublico.startsWith("https://")) cookie += "; Secure";
+        pedido.getResponseHeaders().add("Set-Cookie", cookie);
     }
 
     private boolean arquivo(HttpExchange pedido, String caminho) throws IOException {

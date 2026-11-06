@@ -10,9 +10,12 @@ No plano gratuito, a primeira abertura após um período sem visitas pode demora
 
 ## O que dá para fazer
 
-- Escolher serviço, profissional, dia e horário.
-- Agendar um atendimento e guardar o código da reserva.
-- Consultar e cancelar usando o código e o telefone informado.
+- Agendar em duas etapas: primeiro o serviço e o dia; depois o horário e seus dados.
+- Ver dia, horário e profissional em “Meu agendamento”, sem redigitar o código no mesmo navegador.
+- Consultar em outro aparelho usando o código e o telefone da reserva.
+- Cancelar pelos detalhes do agendamento, confirmando o telefone.
+
+O navegador lembra os códigos das últimas cinco reservas por até 60 dias. Nome e telefone não ficam nesse lembrete. Se limpar os dados do navegador, ainda dá para consultar com o código e o telefone.
 
 A agenda respeita a duração dos serviços, o almoço, o fechamento e os horários já reservados. O banco impede duas reservas no mesmo intervalo com o mesmo profissional, mesmo quando os pedidos chegam juntos.
 
