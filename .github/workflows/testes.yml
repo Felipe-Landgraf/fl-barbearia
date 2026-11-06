@@ -1,0 +1,66 @@
+name: Testes da FL Barbearia
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'site/**'
+      - 'testes/**'
+      - 'lib/**'
+      - 'Dockerfile'
+      - 'compilar.sh'
+      - 'manifesto.txt'
+      - 'render.yaml'
+      - '.github/workflows/testes.yml'
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: fl_barbearia_teste
+          POSTGRES_USER: fl_teste
+          POSTGRES_PASSWORD: fl_teste+seguro
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U fl_teste -d fl_barbearia_teste"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgresql://fl_teste:fl_teste%2Bseguro@127.0.0.1:5432/fl_barbearia_teste
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compilar o projeto
+        run: sh compilar.sh
+      - name: Conferir regras, configuração e PostgreSQL
+        run: |
+          javac -encoding UTF-8 --release 21 -cp 'build:lib/*' -d build testes/barbearia/*.java
+          java -cp 'build:lib/*' barbearia.TesteAgenda
+          java -cp 'build:lib/*' barbearia.TesteConfiguracao
+          java -cp 'build:lib/*' barbearia.TestePostgres
+      - name: Conferir o pacote de hospedagem
+        run: |
+          docker build -t fl-barbearia-teste .
+          docker run -d --name fl-barbearia-teste --network host --memory=512m -e PORT=8086 -e APP_URL=http://127.0.0.1:8086 -e DATABASE_URL="$TEST_DATABASE_URL" fl-barbearia-teste
+          for tentativa in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8086/saude; then break; fi
+            sleep 2
+          done
+          curl -fsS http://127.0.0.1:8086/saude
+          python3 testes/teste_http.py
+      - name: Encerrar a conferência
+        if: always()
+        run: docker rm -f fl-barbearia-teste || true

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: fl-barbearia
+    runtime: docker
+    plan: free
+    region: virginia
+    healthCheckPath: /saude
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: TZ
+        value: America/Sao_Paulo

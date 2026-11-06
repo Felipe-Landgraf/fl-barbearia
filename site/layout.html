@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FL Barbearia: um projeto de portfólio de Felipe Landgraf. Escolha seu serviço, profissional e horário em uma agenda simples de usar.">
+    <meta name="theme-color" content="#111210">
+    <title>{{titulo}}</title>
+    <link rel="icon" href="/imagens/simbolo.png" type="image/png">
+    <link rel="stylesheet" href="/estilo.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+    <div class="faixa-demo">Uma barbearia fictícia. Um projeto feito para o meu portfólio.</div>
+    <header class="cabecalho">
+        <a class="marca" href="/" aria-label="FL Barbearia, início">
+            <img src="/imagens/simbolo.png" alt="" width="55" height="52">
+            <span><strong>FL Barbearia<span class="ponto">.</span></strong><small>ESTILO EM CADA DETALHE</small></span>
+        </a>
+        <button class="menu-botao" type="button" aria-expanded="false" aria-controls="navegacao">Menu <span aria-hidden="true">☰</span></button>
+        <nav id="navegacao" aria-label="Navegação principal">
+            <a href="/#servicos">Serviços</a>
+            <a href="/#sobre">A barbearia</a>
+            <a href="/consultar">Meu agendamento</a>
+            <a class="botao pequeno" href="/#agendar">Agendar horário <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+    <main id="conteudo">{{conteudo}}</main>
+    <footer class="rodape">
+        <div class="rodape-topo">
+            <a class="marca" href="/" aria-label="FL Barbearia, início"><img src="/imagens/simbolo.png" alt="" width="55" height="52"><span><strong>FL Barbearia<span class="ponto">.</span></strong><small>SEU ESTILO. SUA ASSINATURA.</small></span></a>
+            <p>Um tempo para você.<br>Um cuidado que fica.</p>
+            <a href="/#agendar">Seu próximo horário <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="rodape-final"><p>Criado por <a href="https://github.com/Felipe-Landgraf">Felipe Landgraf</a> · Portfólio de apresentação</p><span>HTML · CSS · JavaScript · Java · SQL</span></div>
+    </footer>
+</body>
+</html>

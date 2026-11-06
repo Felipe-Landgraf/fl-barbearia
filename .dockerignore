@@ -1,0 +1,13 @@
+.git
+.github
+.vscode
+build
+dados
+java
+docs
+testes
+*.zip
+*.log
+fl-barbearia.jar
+.env
+.env.*

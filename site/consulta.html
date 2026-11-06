@@ -1,0 +1,16 @@
+<section class="pagina-curta consulta">
+    <a class="voltar" href="/">← Voltar para a barbearia</a>
+    <p class="etiqueta">SEU MOMENTO, ORGANIZADO</p>
+    <h1>Meu <em>agendamento.</em></h1>
+    <p>Informe o código que você recebeu na confirmação e o telefone usado na reserva.</p>
+    <div class="painel-consulta">
+        {{aviso}}
+        <form action="/consultar" method="post">
+            <input type="hidden" name="token" value="{{token}}">
+            <label for="codigo">Código do agendamento<input id="codigo" name="codigo" value="{{codigo}}" placeholder="Ex.: A1B2C3D4E5F60708" minlength="16" maxlength="19" autocapitalize="characters" spellcheck="false" required></label>
+            <label for="telefone">Telefone com DDD<input id="telefone" type="tel" name="telefone" inputmode="tel" autocomplete="tel-national" placeholder="(19) 99999-9999" maxlength="16" required></label>
+            <button class="botao confirmar" type="submit">Consultar agendamento <span aria-hidden="true">↗</span></button>
+        </form>
+    </div>
+    <p class="texto-apoio">O código aparece somente na confirmação. Não enviamos SMS ou WhatsApp.</p>
+</section>

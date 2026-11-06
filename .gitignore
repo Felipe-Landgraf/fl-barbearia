@@ -1,0 +1,13 @@
+build/
+dados/
+java/
+/fl-barbearia.jar
+*.log
+*.zip
+.DS_Store
+.env
+.env.*
+!.env.example
+*.db
+*.db.*
+*.pem

@@ -1,0 +1,18 @@
+H2 Database Engine 2.5.252
+https://h2database.com
+https://github.com/h2database/h2database/tree/version-2.5.252
+
+This software contains an unmodified binary redistribution of the H2
+database engine, available under the Mozilla Public License 2.0 or the
+Eclipse Public License 1.0. Original license and warranty terms:
+https://h2database.com/html/license.html
+
+The library is provided as is, without warranty of any kind. The original
+copyright, license and disclaimer are included in LICENCA-H2.html.
+
+PostgreSQL JDBC Driver 42.7.14
+https://jdbc.postgresql.org
+https://github.com/pgjdbc/pgjdbc
+
+Unmodified binary redistribution under the BSD 2-Clause License.
+The original license and disclaimer are included in LICENCA-POSTGRESQL.txt.
