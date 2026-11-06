@@ -2,6 +2,10 @@
 
 Este é um projeto meu para o meu **portfólio de apresentação**. Criei o site de uma barbearia fictícia para praticar **HTML, CSS, JavaScript, Java e SQL**, com visual preto, creme e cobre.
 
+**[Abrir a FL Barbearia](https://fl-barbearia.onrender.com/)**
+
+No plano gratuito, a primeira abertura após um período sem visitas pode demorar cerca de um minuto.
+
 ![Prévia da FL Barbearia](docs/previa.png)
 
 ## O que dá para fazer
@@ -18,7 +22,7 @@ Serviços, preços e profissionais são fictícios. Use dados de exemplo para co
 
 Usei formulários comuns: o Java recebe os dados e devolve a página pronta. O JavaScript cuida de pequenas interações, como o menu e a cópia do código da reserva. Não usei Bootstrap, frameworks ou APIs externas para os agendamentos.
 
-Online, a aplicação foi preparada para usar **PostgreSQL no Neon** e hospedagem no **Render**, com a senha guardada na configuração privada do servidor. No computador, ela também funciona com **H2**, que salva o banco em um arquivo local.
+Online, a aplicação usa **PostgreSQL no Neon** e hospedagem no **Render**, com a senha guardada na configuração privada do servidor. No computador, ela também funciona com **H2**, que salva o banco em um arquivo local.
 
 O código das páginas fica em `site`. Em `src/barbearia`, separei as regras em `Agenda`, o banco em `Banco`, as páginas em `Pagina` e o atendimento dos formulários em `Servidor`. `Configuracao` ajusta a conexão e o endereço conforme o ambiente.
 
