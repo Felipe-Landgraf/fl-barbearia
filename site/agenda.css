@@ -1,0 +1,171 @@
+.pagina-interna {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagina-interna > .faixa-demo { display: none; }
+.pagina-interna .cabecalho { min-height: 64px; max-width: 1100px; width: calc(100% - 48px); padding: 0; }
+.pagina-interna .marca img { width: 36px; height: 36px; }
+.pagina-interna .marca strong { font-size: 22px; }
+.pagina-interna .marca small { font-size: 6px; }
+.pagina-interna .cabecalho nav { gap: 16px; }
+.pagina-interna .cabecalho nav > a { padding: 9px 14px; }
+.pagina-interna main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 12px 24px; }
+.pagina-interna .pagina-agenda, .pagina-interna .pagina-curta { width: min(100%, 1040px); min-height: 0; margin: 0; padding: 0; }
+.pagina-interna .voltar { margin-bottom: 9px; font-size: 12px; }
+.pagina-interna .etapas { gap: 24px; }
+.pagina-interna .etapas li { font-size: 11px; }
+.pagina-interna .etapas span { width: 23px; height: 23px; }
+.navegacao-agenda { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 8px; }
+.pagina-interna .navegacao-agenda .voltar { margin: 0; }
+.pagina-interna h1 { font-size: 32px; margin: 6px 0 5px; }
+.pagina-interna .introducao-agenda, .pagina-interna .reserva > p:not(.etiqueta) { font-size: 12px; margin-bottom: 10px; }
+.pagina-interna .agenda-formularios { padding: 16px; margin: 0; }
+.pagina-interna fieldset { margin-bottom: 16px; }
+.pagina-interna legend, .pagina-interna label { font-size: 12px; }
+.pagina-interna legend { margin-bottom: 8px; }
+.pagina-interna .escolha { padding: 10px 12px; min-height: 60px; line-height: 1.35; }
+.pagina-interna .escolha strong { font-size: 13px; }
+.pagina-interna .escolha small { font-size: 11px; margin-top: 2px; }
+.pagina-interna .iniciais { display: none; }
+.pagina-interna .botao { min-height: 42px; padding: 11px 16px; font-size: 12px; }
+.pagina-interna input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]) { min-height: 42px; padding: 9px 12px; margin-top: 5px; font-size: 15px; }
+.pagina-interna .texto-apoio { font-size: 11px; margin-top: 8px; line-height: 1.5; }
+.pagina-interna .mensagem { padding: 10px 13px; margin-bottom: 12px; }
+.pagina-interna .ajuda-final { font-size: 12px; margin-top: 12px; }
+.tela-servico #consulta-horarios { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; }
+.tela-servico .servicos-agenda { margin: 0; }
+.tela-servico .opcoes-servico { height: calc(100% - 25px); }
+.pagina-interna .proxima-etapa { margin-top: 14px; }
+.pagina-interna .selecao-atual { font-size: 13px; padding-bottom: 10px; margin-bottom: 14px; }
+.pagina-interna .selecao-atual span { font-size: 11px; margin-top: 2px; }
+.pagina-interna .selecao-atual > div { display: flex; gap: 14px; align-items: center; }
+.tela-horarios #form-agendar { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: start; }
+.tela-horarios .escolher-hora { margin: 0; }
+.pagina-interna .horarios { grid-template-columns: repeat(8, 1fr); gap: 6px; }
+.pagina-interna .hora span { display: grid; place-items: center; min-height: 36px; padding: 6px 2px; line-height: 1.3; font-size: 13px; }
+.pagina-interna .dados-cliente { grid-template-columns: 1fr 1fr; gap: 9px; }
+.pagina-interna .resumo { margin: 13px 0; padding-top: 11px; }
+.pagina-interna .resumo > div strong { font-size: 13px; }
+.pagina-interna .resumo > div span { font-size: 12px; }
+.pagina-interna .resumo-preco { font-size: 25px; }
+.paginacao { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 10px; }
+.paginacao button { min-height: 36px; border: 1px solid #696353; background: transparent; color: var(--texto); padding: 5px 12px; font-size: 12px; }
+.paginacao button:disabled { opacity: 0.35; cursor: default; }
+.paginacao span { font-size: 11px; color: var(--suave); }
+.pagina-interna .titulo-agenda { gap: 16px; margin: 0; }
+.pagina-interna .titulo-agenda h1 { margin-top: 5px; }
+.pagina-interna .cartao-reserva { padding: 14px 18px; gap: 18px; }
+.pagina-interna .data-reserva { width: 56px; padding: 5px; }
+.pagina-interna .data-reserva strong { font-size: 28px; }
+.pagina-interna .data-reserva span { font-size: 11px; }
+.pagina-interna .cartao-informacoes h2 { font-size: 24px; margin: 2px 0 4px; }
+.pagina-interna .cartao-informacoes p { font-size: 12px; }
+.pagina-interna .lista-reservas { gap: 10px; }
+.pagina-interna .agenda-vazia { padding: 18px; }
+.pagina-interna .agenda-vazia > span { display: none; }
+.pagina-interna .agenda-vazia h2 { font-size: 26px; margin: 0 0 8px; }
+.pagina-interna .agenda-vazia p { font-size: 12px; margin-bottom: 14px; }
+.pagina-interna .buscar-reserva, .pagina-interna .historico, .pagina-interna .cancelar-reserva { margin-top: 12px; padding: 12px 16px; }
+.pagina-interna .buscar-reserva summary, .pagina-interna .historico summary, .pagina-interna .cancelar-reserva summary { font-size: 12px; }
+.pagina-interna .buscar-reserva > p { margin-top: 10px; font-size: 12px; }
+.pagina-interna .buscar-reserva form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; align-items: end; margin-top: 12px; }
+.pagina-interna .buscar-reserva label { margin: 0; }
+.pagina-interna .historico .lista-reservas { margin-top: 12px; }
+.meus-agendamentos:has(.buscar-reserva[open]) .area-reservas { display: none; }
+.area-reservas:has(.historico[open]) > .lista-reservas, .area-reservas:has(.historico[open]) > .paginacao, .area-reservas:has(.historico[open]) > .agenda-vazia { display: none; }
+.pagina-interna .reserva { max-width: 960px; }
+.navegacao-reserva { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 8px; }
+.pagina-interna .navegacao-reserva .voltar { margin: 0; }
+.resumo-cancelar { display: none; }
+.pagina-interna .reserva-conteudo { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: start; }
+.pagina-interna .bilhete { margin: 0; padding: 18px 22px; }
+.pagina-interna .bilhete-topo { margin-bottom: 12px; padding-bottom: 10px; }
+.pagina-interna .bilhete h2 { font-size: 30px; }
+.pagina-interna .bilhete > p { margin: 4px 0 14px; }
+.pagina-interna .bilhete dl > div { margin: 8px 0; }
+.pagina-interna .bilhete dd { font-size: 14px; }
+.pagina-interna .codigo-reserva { margin-top: 14px; padding-top: 12px; }
+.pagina-interna .codigo-reserva strong { font-size: 20px; }
+.pagina-interna .ver-agendamentos { margin: 0; }
+.pagina-interna .reserva-acao { margin-top: 12px; }
+.pagina-interna .cancelar-reserva { margin-top: 0; }
+.pagina-interna .cancelar-reserva form { margin-top: 12px; }
+.pagina-interna .confirmar-cancelamento { font-size: 12px; margin: 14px 0; }
+.pagina-interna .rodape { padding: 7px 24px; background: transparent; }
+.pagina-interna .rodape-topo { display: none; }
+.pagina-interna .rodape-final { border: 0; padding: 0; max-width: 1100px; font-size: 10px; }
+.pagina-interna .rodape-final > span { display: none; }
+
+@media (max-width: 760px) {
+    .pagina-interna .cabecalho { width: calc(100% - 28px); min-height: 0; padding: 6px 0; gap: 6px; }
+    .pagina-interna .marca { gap: 8px; }
+    .pagina-interna .marca strong { font-size: 20px; }
+    .pagina-interna .marca img { width: 26px; height: 26px; }
+    .pagina-interna .marca small { display: none; }
+    .pagina-interna .cabecalho nav { gap: 8px; }
+    .pagina-interna .cabecalho nav > a { padding: 7px 10px; min-height: 34px; font-size: 11px; }
+    .pagina-interna .cabecalho nav .botao { gap: 10px; min-height: 34px; padding: 6px 10px; }
+    .pagina-interna .cabecalho nav .botao span { font-size: 14px; }
+    .pagina-interna main { padding: 10px 14px; }
+    .pagina-interna .voltar { margin-bottom: 7px; font-size: 11px; }
+    .pagina-interna h1 { font-size: 28px; margin: 8px 0 5px; }
+    .pagina-interna .etapas { gap: 12px; }
+    .pagina-interna .etapas li { font-size: 10px; gap: 6px; white-space: nowrap; }
+    .pagina-interna .etapas span { width: 21px; height: 21px; }
+    .pagina-interna .navegacao-agenda { gap: 8px; }
+    .pagina-interna .navegacao-agenda .voltar { font-size: 10px; white-space: nowrap; }
+    .pagina-interna .introducao-agenda, .pagina-interna .reserva > p:not(.etiqueta) { font-size: 12px; margin-bottom: 10px; }
+    .pagina-interna .agenda-formularios { padding: 14px; }
+    .tela-servico #consulta-horarios, .tela-horarios #form-agendar, .pagina-interna .reserva-conteudo { grid-template-columns: 1fr; gap: 12px; }
+    .tela-servico .opcoes-servico { height: auto; }
+    .pagina-interna fieldset { margin-bottom: 10px; }
+    .pagina-interna .escolha { padding: 7px 9px; min-height: 48px; gap: 8px; }
+    .pagina-interna .escolha strong { font-size: 12px; }
+    .pagina-interna .escolha small { font-size: 10px; }
+    .pagina-interna .opcoes-servico, .pagina-interna .opcoes-barbeiro { gap: 7px; }
+    .pagina-interna input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]) { font-size: 16px; min-height: 42px; }
+    .pagina-interna .texto-apoio { font-size: 10px; margin-top: 6px; }
+    .pagina-interna .proxima-etapa { margin-top: 10px; }
+    .pagina-interna .ajuda-final { font-size: 11px; margin-top: 9px; }
+    .pagina-interna .horarios { grid-template-columns: repeat(4, 1fr); }
+    .pagina-interna .hora span { padding: 6px 2px; }
+    .pagina-interna .dados-cliente { grid-template-columns: 1fr 1fr; gap: 9px; }
+    .pagina-interna .resumo { margin: 9px 0; padding-top: 8px; }
+    .pagina-interna .resumo > div strong { font-size: 12px; }
+    .pagina-interna .resumo > div span { font-size: 11px; }
+    .pagina-interna .selecao-atual { padding-bottom: 8px; margin-bottom: 10px; }
+    .pagina-interna .selecao-atual span { display: none; }
+    .tela-horarios .introducao-agenda { display: none; }
+    .pagina-interna .titulo-agenda { display: flex; align-items: center; gap: 10px; }
+    .pagina-interna .titulo-agenda h1 { font-size: 28px; }
+    .pagina-interna .titulo-agenda .etiqueta { display: none; }
+    .pagina-interna .titulo-agenda .botao { min-height: 34px; padding: 8px 10px; font-size: 10px; gap: 6px; }
+    .pagina-interna .cartao-reserva { gap: 12px; padding: 13px; }
+    .pagina-interna .cartao-reserva .botao { min-height: 36px; }
+    .pagina-interna .cartao-informacoes h2 { font-size: 24px; }
+    .pagina-interna .cartao-informacoes p { font-size: 11px; }
+    .pagina-interna .agenda-vazia h2 { font-size: 23px; }
+    .pagina-interna .buscar-reserva form { grid-template-columns: 1fr; gap: 10px; }
+    .pagina-interna .buscar-reserva, .pagina-interna .historico, .pagina-interna .cancelar-reserva { padding: 11px 13px; margin-top: 10px; }
+    .pagina-interna .bilhete { padding: 14px 17px; }
+    .pagina-interna .bilhete-topo { margin-bottom: 10px; padding-bottom: 8px; }
+    .pagina-interna .bilhete h2 { font-size: 27px; }
+    .pagina-interna .bilhete > p { margin-bottom: 10px; }
+    .pagina-interna .bilhete dl > div { margin: 6px 0; }
+    .pagina-interna .bilhete dd { font-size: 12px; }
+    .pagina-interna .codigo-reserva { margin-top: 10px; padding-top: 9px; }
+    .pagina-interna .codigo-reserva summary { font-size: 11px; }
+    .pagina-interna .cancelar-reserva { margin-top: 0; }
+    .reserva:has(.cancelar-reserva[open]) .bilhete { display: none; }
+    .reserva:has(.codigo-reserva[open]) > p:not(.etiqueta) { display: none; }
+    .reserva:has(.cancelar-reserva[open]) .resumo-cancelar { display: grid; gap: 4px; margin-bottom: 14px; font-size: 13px; }
+    .resumo-cancelar span { color: var(--suave); font-size: 12px; }
+    .pagina-interna .rodape { padding: 6px 14px; }
+    .pagina-interna .rodape-final { font-size: 9px; }
+}
+
+@media (min-width: 761px) and (max-width: 1000px) {
+    .pagina-interna .horarios { grid-template-columns: repeat(6, 1fr); }
+}

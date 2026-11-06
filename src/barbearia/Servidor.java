@@ -173,7 +173,7 @@ public class Servidor {
 
     private boolean arquivo(HttpExchange pedido, String caminho) throws IOException {
         Map<String, String> arquivos = Map.of(
-            "/estilo.css", "text/css; charset=utf-8", "/script.js", "text/javascript; charset=utf-8",
+            "/estilo.css", "text/css; charset=utf-8", "/agenda.css", "text/css; charset=utf-8", "/script.js", "text/javascript; charset=utf-8",
             "/imagens/simbolo.png", "image/png", "/imagens/cadeira.jpg", "image/jpeg");
         if (!arquivos.containsKey(caminho)) return false;
         byte[] conteudo = Files.readAllBytes(site.resolve(caminho.substring(1)));

@@ -1,7 +1,7 @@
-<section class="pagina-agenda">
-    <a class="voltar" href="{{alterar}}">← Alterar serviço ou dia</a>
-    <ol class="etapas" aria-label="Etapas do agendamento"><li><span>✓</span> Serviço e dia</li><li aria-current="step"><span>2</span> Horário e confirmação</li></ol>
-    <h1>Qual horário<br>fica <em>melhor?</em></h1>
+<section class="pagina-agenda tela-horarios">
+    <div class="navegacao-agenda"><a class="voltar" href="{{alterar}}">← Alterar serviço ou dia</a>
+    <ol class="etapas" aria-label="Etapas do agendamento"><li><span>✓</span> Serviço e dia</li><li aria-current="step"><span>2</span> Horário e dados</li></ol></div>
+    <h1>Qual horário fica <em>melhor?</em></h1>
     <p class="introducao-agenda">{{servico_nome}} com {{barbeiro_nome}} · {{duracao}} min · {{preco}}</p>
     <div class="agenda-formularios">
         <div class="selecao-atual"><div><strong>{{dia_extenso}}</strong><span>{{quantidade}}</span></div><a href="{{alterar}}">Alterar</a></div>
@@ -11,15 +11,16 @@
             <input type="hidden" name="servico" value="{{servico_id}}">
             <input type="hidden" name="barbeiro" value="{{barbeiro_id}}">
             <input type="hidden" name="data" value="{{data}}">
-            <fieldset><legend>Toque em um horário disponível</legend><div class="horarios">{{horarios}}</div></fieldset>
+            <fieldset class="escolher-hora"><legend>Toque em um horário disponível</legend><div class="horarios">{{horarios}}</div></fieldset>
+            <div class="finalizar-reserva">
             <div class="dados-cliente">
                 <label for="nome">Seu nome<input id="nome" name="nome" autocomplete="name" placeholder="Como podemos chamar você?" minlength="3" maxlength="80" value="{{nome}}" required></label>
                 <label for="telefone">Telefone com DDD<input id="telefone" type="tel" name="telefone" autocomplete="tel-national" inputmode="tel" placeholder="(19) 99999-9999" maxlength="16" pattern="[0-9() +\-]{10,16}" value="{{telefone}}" required></label>
             </div>
             <div class="resumo"><div><strong>{{servico_nome}} · {{barbeiro_nome}}</strong><span id="horario-escolhido" aria-live="polite">{{horario_selecionado}}</span></div><strong class="resumo-preco">{{preco}}</strong></div>
             <button type="submit" class="botao confirmar" id="confirmar" {{desabilitado}}>Confirmar agendamento <span aria-hidden="true">✓</span></button>
-            <p class="texto-apoio">Depois de confirmar, sua reserva aparece em “Meu agendamento” neste navegador.</p>
-            <p class="texto-apoio">Projeto de demonstração: use dados fictícios. Nenhum pagamento é realizado.</p>
+            <p class="texto-apoio">Sua reserva aparece em “Meu agendamento”. Use dados fictícios: este projeto não realiza cobranças.</p>
+            </div>
         </form>
     </div>
 </section>

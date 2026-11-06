@@ -47,7 +47,7 @@ public class Pagina {
             }
         }
         return layout("FL Barbearia — Seu estilo, sua assinatura", preencher("inicio.html", Map.of(
-            "cards", cards.toString(), "lembrete", lembrete)));
+            "cards", cards.toString(), "lembrete", lembrete)), "pagina-inicial");
     }
 
     public String agendar(Map<String, String> parametros, String aviso) throws IOException, SQLException {
@@ -173,7 +173,11 @@ public class Pagina {
     }
 
     private String layout(String titulo, String conteudo) throws IOException {
-        return preencher("layout.html", Map.of("titulo", titulo, "conteudo", conteudo));
+        return layout(titulo, conteudo, "pagina-interna");
+    }
+
+    private String layout(String titulo, String conteudo, String classe) throws IOException {
+        return preencher("layout.html", Map.of("titulo", titulo, "conteudo", conteudo, "classe", classe));
     }
 
     private String preencher(String arquivo, Map<String, String> dados) throws IOException {

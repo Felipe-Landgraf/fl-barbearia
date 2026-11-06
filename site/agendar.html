@@ -1,18 +1,19 @@
-<section class="pagina-agenda">
-    <a class="voltar" href="/">← Voltar para o início</a>
-    <ol class="etapas" aria-label="Etapas do agendamento"><li aria-current="step"><span>1</span> Serviço e dia</li><li><span>2</span> Horário e confirmação</li></ol>
-    <h1>Vamos marcar<br>seu <em>horário?</em></h1>
-    <p class="introducao-agenda">Escolha o serviço, o profissional e o melhor dia para você.</p>
+<section class="pagina-agenda tela-servico">
+    <div class="navegacao-agenda"><a class="voltar" href="/">← Voltar para o início</a>
+    <ol class="etapas" aria-label="Etapas do agendamento"><li aria-current="step"><span>1</span> Serviço e dia</li><li><span>2</span> Horário e dados</li></ol></div>
+    <h1>Vamos marcar seu <em>horário?</em></h1>
+    <p class="introducao-agenda">Escolha o serviço, o profissional e o dia.</p>
     <div class="agenda-formularios">
         {{aviso}}
         <form method="get" action="/agendar" id="consulta-horarios">
             <input type="hidden" name="etapa" value="horarios">
-            <fieldset><legend>Qual serviço?</legend><div class="opcoes-servico">{{servicos}}</div></fieldset>
+            <fieldset class="servicos-agenda"><legend>Qual serviço?</legend><div class="opcoes-servico">{{servicos}}</div></fieldset>
+            <div class="dia-profissional">
             <fieldset><legend>Com qual profissional?</legend><div class="opcoes-barbeiro">{{barbeiros}}</div></fieldset>
             <label for="data">Qual dia?<input id="data" type="date" name="data" value="{{data}}" min="{{minimo}}" max="{{maximo}}" required></label>
             <p class="texto-apoio">Segunda a sexta, 09h às 19h. Sábado, 09h às 16h. Domingo fechado.</p>
             <button class="botao confirmar proxima-etapa" type="submit">Escolher horário <span aria-hidden="true">→</span></button>
+            </div>
         </form>
     </div>
-    <p class="ajuda-final">Já fez uma reserva? <a href="/consultar">Ver meu agendamento</a></p>
 </section>
